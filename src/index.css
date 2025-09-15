@@ -1,42 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Rural Education Platform Design System - Gamified & Accessible */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors */
+    --background: 45 100% 98%;
+    --foreground: 215 25% 25%;
 
+    /* Card colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 25%;
 
+    /* Popover colors */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Student theme - Bright & Gamified */
+    --student-primary: 158 64% 52%;
+    --student-primary-foreground: 0 0% 100%;
+    --student-secondary: 200 98% 55%;
+    --student-secondary-foreground: 0 0% 100%;
+    --student-accent: 47 96% 53%;
+    --student-accent-foreground: 215 25% 25%;
+    --student-success: 120 60% 50%;
+    --student-warning: 38 92% 50%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Teacher theme - Professional & Warm */
+    --teacher-primary: 213 94% 68%;
+    --teacher-primary-foreground: 0 0% 100%;
+    --teacher-secondary: 220 13% 18%;
+    --teacher-secondary-foreground: 0 0% 100%;
+    --teacher-accent: 25 95% 53%;
+    --teacher-accent-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Gamification colors */
+    --xp-bar: 158 64% 52%;
+    --badge-gold: 45 100% 51%;
+    --badge-silver: 0 0% 75%;
+    --badge-bronze: 25 75% 47%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Gradients */
+    --gradient-student: linear-gradient(135deg, hsl(158 64% 52%), hsl(200 98% 55%));
+    --gradient-teacher: linear-gradient(135deg, hsl(213 94% 68%), hsl(220 13% 18%));
+    --gradient-hero: linear-gradient(135deg, hsl(158 64% 52%), hsl(200 98% 55%), hsl(47 96% 53%));
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* System colors */
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 25%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 47 96% 53%;
+    --accent-foreground: 215 25% 25%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 158 64% 52%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Border radius for rounded design */
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +130,108 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+@layer components {
+  /* Student Theme Components */
+  .student-card {
+    @apply bg-white rounded-2xl shadow-lg border border-white/20 backdrop-blur-sm hover:shadow-xl transition-all duration-300;
+  }
+
+  .student-button {
+    @apply bg-gradient-to-r from-[hsl(var(--student-primary))] to-[hsl(var(--student-secondary))] text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+  }
+
+  .teacher-card {
+    @apply bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300;
+  }
+
+  .teacher-button {
+    @apply bg-gradient-to-r from-[hsl(var(--teacher-primary))] to-[hsl(var(--teacher-secondary))] text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300;
+  }
+
+  /* Gamification Elements */
+  .xp-bar {
+    @apply w-full bg-gray-200 rounded-full h-3 overflow-hidden;
+  }
+
+  .xp-progress {
+    @apply h-full bg-gradient-to-r from-[hsl(var(--xp-bar))] to-[hsl(var(--student-secondary))] rounded-full transition-all duration-500 ease-out;
+  }
+
+  .badge {
+    @apply w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-lg;
+  }
+
+  .badge-gold {
+    @apply bg-gradient-to-br from-[hsl(var(--badge-gold))] to-yellow-600;
+  }
+
+  .badge-silver {
+    @apply bg-gradient-to-br from-[hsl(var(--badge-silver))] to-gray-500;
+  }
+
+  .badge-bronze {
+    @apply bg-gradient-to-br from-[hsl(var(--badge-bronze))] to-orange-700;
+  }
+
+  /* Backgrounds */
+  .student-bg {
+    background: linear-gradient(135deg, hsl(158 64% 52%) 0%, hsl(200 98% 55%) 50%, hsl(47 96% 53%) 100%);
+  }
+
+  .teacher-bg {
+    background: linear-gradient(135deg, hsl(213 94% 68%) 0%, hsl(220 13% 18%) 100%);
+  }
+
+  /* Animations */
+  .bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+
+  .pulse-slow {
+    animation: pulseSlow 3s ease-in-out infinite;
+  }
+
+  .slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-[hsl(var(--student-primary))] to-[hsl(var(--student-secondary))] bg-clip-text text-transparent;
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+
+  .shadow-warm {
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* Custom Keyframes */
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
