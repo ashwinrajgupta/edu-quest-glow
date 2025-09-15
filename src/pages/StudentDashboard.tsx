@@ -18,7 +18,8 @@ import {
   Users,
   Crown,
   Medal,
-  LogOut
+  LogOut,
+  Beaker
 } from "lucide-react";
 
 const StudentDashboard = () => {
@@ -218,6 +219,30 @@ const StudentDashboard = () => {
                     </div>
                   </div>
                 ))}
+              </CardContent>
+            </Card>
+
+            {/* Chemistry Lab */}
+            <Card className="student-card">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Beaker className="w-5 h-5 mr-2 text-blue-600" />
+                  Chemistry Lab Simulation
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border">
+                  <h3 className="font-bold mb-2">🧪 Virtual Chemistry Lab</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Experiment with chemicals, observe reactions, and learn about physical and chemical changes!
+                  </p>
+                  <Link to="/chemistry-lab">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                      <Beaker className="w-4 h-4 mr-2" />
+                      Start Experimenting
+                    </Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
 
